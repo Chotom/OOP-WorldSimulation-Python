@@ -113,19 +113,19 @@ class World(object):
     def setInformation(self, i, org, enemy):
         #0 - organism killed enemy
         if i == 0:
-            self.__messageInfo += org.name + "(" + str(org.posX) + "," + str(org.posY) + ")" + " has killed " + enemy.name + "(" + str(enemy.posX) + "," + str(enemy.posY) + ")" + "\n"
+            self.__messageInfo += org.__class__.__name__ + "(" + str(org.posX) + "," + str(org.posY) + ")" + " has killed " + enemy.__class__.__name__ + "(" + str(enemy.posX) + "," + str(enemy.posY) + ")" + "\n"
         #1 - organism is Born
         if i == 1:
-            self.__messageInfo += org.name + "(" + str(org.posX) + "," + str(org.posY) + ")" + " was Born " + "\n"
+            self.__messageInfo += org.__class__.__name__ + "(" + str(org.posX) + "," + str(org.posY) + ")" + " was Born " + "\n"
         #2 - organism escape
         if i == 2:
-            self.__messageInfo += org.name + " trying kill " + enemy.name + " but " + enemy.name + " escaped " + "\n"
+            self.__messageInfo += org.__class__.__name__ + " trying kill " + enemy.__class__.__name__ + " but " + enemy.__class__.__name__ + " escaped " + "\n"
         #3 - organism defend attack
         if i == 3:
-            self.__messageInfo += org.name + " trying kill " + enemy.name + " but " + enemy.name + " defended " + "\n"
+            self.__messageInfo += org.__class__.__name__ + " trying kill " + enemy.__class__.__name__ + " but " + enemy.__class__.__name__ + " defended " + "\n"
         #4 - give boost
         if i == 4:
-            self.__messageInfo += org.name + "(" + str(org.posX) + "," + str(org.posY) + ")" + " give boost to " + enemy.name + "\n"
+            self.__messageInfo += org.__class__.__name__ + "(" + str(org.posX) + "," + str(org.posY) + ")" + " give boost to " + enemy.__class__.__name__ + "\n"
 
     # Recreate world with new size
     def changeSize(self, sizeX, sizeY):

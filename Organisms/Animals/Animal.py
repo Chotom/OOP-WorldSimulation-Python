@@ -52,7 +52,7 @@ class Animal(Organism, ABC):
     def collision(self, org, changeX, changeY):
         # Animal copulate when find type
         if isinstance(org, Animal):
-            if self.name == org.name and self.canReproduce == 1 and org.canReproduce == 1:
+            if self.__class__.__name__ == org.__class__.__name__ and self.canReproduce == 1 and org.canReproduce == 1:
                 possibleBorn = self._tryMove(1, org.posX, org.posY)
                 freePosition = 0
                 bornX = 0
@@ -88,10 +88,10 @@ class Animal(Organism, ABC):
                 return 0
                 
             # Cant copulate with child
-            elif self.name == org.name and (org.isBorn == 0 or self.isBorn == 0): 
+            elif self.__class__.__name__ == org.__class__.__name__ and (org.isBorn == 0 or self.isBorn == 0): 
                 return 0
             # Adult cant copulate twice in one turn
-            elif self.name == org.name: 
+            elif self.__class__.__name__ == org.__class__.__name__: 
                 return 0
         
         return super().collision(org, changeX, changeY)

@@ -9,7 +9,6 @@ class Organism(ABC):
         self._world = world
         self._initiative = 0
         self._boost = 0
-        self._name = "Organism"
         self._canEscape = 0
         self._canDef = 0
         self._canPoison = 0
@@ -30,7 +29,7 @@ class Organism(ABC):
         return self.__class__(posX, posY, self._world)
 
     def draw(self, tileWidth):
-            self._img = PhotoImage(file="Organisms/Icons/" + self.name +".png")
+            self._img = PhotoImage(file="Organisms/Icons/" + self.__class__.__name__ +".png")
             self._img = self._img.subsample(int(self._img.width()/tileWidth + 1))
             x0 = (self._posX * tileWidth)
             y0 = self._posY * tileWidth
@@ -169,9 +168,6 @@ class Organism(ABC):
     @property
     def initiative(self):
         return self._initiative
-    @property
-    def name(self):
-        return self._name
     @property
     def isAlive(self):
         return self._isAlive

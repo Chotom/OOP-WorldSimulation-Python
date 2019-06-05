@@ -6,7 +6,6 @@ class Antelope(Animal):
         super().__init__(posX, posY, world, strength)
         self._initiative = 4
         self._canEscape = 1
-        self._name = "Antelope"
         if strength is not None:
             self._strength = strength
         else:
