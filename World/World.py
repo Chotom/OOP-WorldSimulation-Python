@@ -2,6 +2,8 @@ from Organisms import Organism
 from Organisms.Animals.Wolf import Wolf
 from Organisms.Animals.Antelope import Antelope
 from Organisms.Animals.Fox import Fox
+from Organisms.Animals.Sheep import Sheep
+from Organisms.Animals.Turtle import Turtle
 
 
 class World(object):
@@ -16,7 +18,7 @@ class World(object):
         self.__initiativeList = []
         self.__humanAlive = 0;
         self.__messageInfo = ""
-        self.ORGANISMS = [Wolf, Antelope, Fox]
+        self.ORGANISMS = [Wolf, Antelope, Fox, Sheep, Turtle]
 
         self.addOrganism(Wolf(0, 0, self))
         self.addOrganism(Wolf(0, 1, self))
