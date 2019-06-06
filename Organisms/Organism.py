@@ -43,14 +43,10 @@ class Organism(ABC):
             return 0
         # Give boost and def die
         elif self.boost:
-            self._world.setInformation(4, org, self)
+            self._world.setInformation(4, self, org)
             org.strength = org.strength + self._boost
-
-            #world.deletePosition(org)
             org.posX += changeX
             org.posY += changeY
-            #world.setPosition(org)
-
             self.isAlive = 0
 
             return 0
@@ -75,7 +71,7 @@ class Organism(ABC):
             if escape * self._canEscape == 1:
                 # Check any possible way to escape and escape
                 if self.__randomiseEscape(self, self.posX, self.posY):
-                    self._world.setInformation(2, org, self);
+                    self._world.setInformation(2, org, self)
 
                     org.posX += changeX
                     org.posY += changeY
@@ -84,30 +80,23 @@ class Organism(ABC):
                 # Defender die
                 else:
                     self._world.setInformation(0, org, self)
-                    #world.deletePosition(org)
                     org.posX += changeX
                     org.posY += changeY
-                    #world.setPosition(org)
                     self.isAlive = 0
 
                     return 0
             # Defender die
             else:
-                self._world.setInformation(0, org, self);
-
-                #world.deletePosition(org);
-                org.posX += changeX;
-                org.posY += changeY;
-                #world.setPosition(org);
+                self._world.setInformation(0, org, self)
+                org.posX += changeX
+                org.posY += changeY
                 self.isAlive = 0
-
-                #self._world.deleteOrganism(self);
             
             return 0
         
         # Attacker die
         else: 
-            self._world.setInformation(0, self, org);
+            self._world.setInformation(0, self, org)
             return 1
         
     

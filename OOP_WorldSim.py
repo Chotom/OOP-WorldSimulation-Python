@@ -45,23 +45,24 @@ class MainWindow(object):
         self.__labelText.set("Press New turn to start")
         self.__messagesOutput = Label(self.__textBoxWindow, textvariable=self.__labelText, height=22, width=60, bg="white", fg="black", relief=GROOVE)
         self.__messagesOutput.grid(row=0, column=0)
+
         # Add world
-        self.__world = World.World(self.__worldView, 20, 20, self.__labelText)
+        self.__world = World.World(self.__worldView, 20, 10, self.__labelText)
 
         # Set Buttons (3, 1)
         self.__saveWorldButton = Button(self.__mainWindow, text="Save", width=29, height=4, command=self.__world.saveToFile)
         self.__saveWorldButton.grid(row=3, column=10, columnspan=3, rowspan=1)
-        self.__loadWorldButton = Button(self.__mainWindow, text="Load", width=29, height=4, command=self.__world.loadWorld)
+        self.__loadWorldButton = Button(self.__mainWindow, text="Load", width=29, height=4, command=self.__world.loadFile)
         self.__loadWorldButton.grid(row=3, column=13, columnspan=3, rowspan=1)
         self.__newTurnButton = Button(self.__mainWindow, text="New Turn", width=60, height=4, command=self.__world.setNextTurn)
         self.__newTurnButton.grid(row=4, column=10, columnspan=6, rowspan=1)
 
-        #self.__worldView.bind("<Left>", self.__world.leftCatch)
-        #self.__worldView.bind("<Up>", self.__world.upCatch)
-        #self.__worldView.bind("<Right>", self.__world.rightCatch)
-        #self.__worldView.bind("<Down>", self.__world.downCatch)
-        #self.__worldView.bind("e", self.__world.eCatch)
-        #self.__worldView.bind("<space>", self.__world.newTurn)
+        # Key binds for events
+        self.__worldView.bind("<Left>", lambda e: self.__world.setHumanZn("w"))
+        self.__worldView.bind("<Up>",  lambda e: self.__world.setHumanZn("a"))
+        self.__worldView.bind("<Right>", lambda e: self.__world.setHumanZn("s"))
+        self.__worldView.bind("<Down>", lambda e: self.__world.setHumanZn("d"))
+        self.__worldView.bind("r", lambda e: self.__world.setHumanZn("r"))
         self.__worldView.bind("<Button-1>", self.__addOrganismOnClick)
         self.__worldView.focus_set()
 
@@ -76,6 +77,5 @@ class MainWindow(object):
     def __addOrganismOnClick(self, event):
         self.__world.addOnClick(self.__organismToChoose.get(), event.x, event.y)
         self.__worldView.focus_set()
-
 
 window = MainWindow()

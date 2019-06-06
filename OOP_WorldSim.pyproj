@@ -34,6 +34,9 @@
     <Compile Include="Organisms\Animals\Fox.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Organisms\Animals\Human.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Organisms\Animals\Sheep.py">
       <SubType>Code</SubType>
     </Compile>
