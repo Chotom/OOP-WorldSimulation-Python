@@ -8,7 +8,7 @@ class MainWindow(object):
         self.__mainWindow = Tk()
 
         self.__mainWindow.resizable(False, False)
-        self.__mainWindow.title("Tomasz Czochanski 176062")
+        self.__mainWindow.title("Tomasz Czochanski")
          
         # Set Board (0, 0)
         self.__boardWindow = LabelFrame(self.__mainWindow, text="Board")
@@ -42,12 +42,12 @@ class MainWindow(object):
         self.__textBoxWindow = LabelFrame(self.__mainWindow, text="Actions:") 
         self.__textBoxWindow.grid(row=2, column=11, columnspan=6)
         self.__labelText = StringVar()
-        self.__labelText.set("Press New turn to start")
+        self.__labelText.set("Arrows - move as Human\nR - special ability\nClick tile to add selected organism\nPress New Turn to start\n")
         self.__messagesOutput = Label(self.__textBoxWindow, textvariable=self.__labelText, height=22, width=60, bg="white", fg="black", relief=GROOVE)
         self.__messagesOutput.grid(row=0, column=0)
 
         # Add world
-        self.__world = World.World(self.__worldView, 20, 10, self.__labelText)
+        self.__world = World.World(self.__worldView, 10, 10, self.__labelText)
 
         # Set Buttons (3, 1)
         self.__saveWorldButton = Button(self.__mainWindow, text="Save", width=29, height=4, command=self.__world.saveToFile)

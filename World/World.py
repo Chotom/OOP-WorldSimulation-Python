@@ -31,7 +31,7 @@ class World(object):
         self.__humanZn = ""
         self.__ORGANISMS = [Wolf, Antelope, Fox, Sheep, Turtle, Grass, Dandelion, DeadlyNightshade, Guarana, SosnowskyHogweed, CyberSheep]
 
-        self.addHuman()
+        self.__addHuman()
 
 
     # Every organism make action and children become adults at the end of turn
@@ -131,19 +131,19 @@ class World(object):
         return nearestSosonowsky
 
     # Add human to random possition
-    def addHuman(self):
-        x = random.randint(0, self.sizeY)
-        y = random.randint(0, self.sizeX)
-        self.addOrganism(Human(x, y, self))
-        self.__humanAlive = 1
+    def __addHuman(self):
+        x = random.randint(0, self.sizeY - 1)
+        y = random.randint(0, self.sizeX - 1)
+        if self.__humanAlive == 0:
+            self.addOrganism(Human(x, y, self))
+            self.__humanAlive = 1
     
     # Delete List and reset variables
-    def clear(self):
+    def __clear(self):
         self.deleteOrganism()
         self. __initiativeList.clear()
         self.__worldWindow.delete("all")
         self.__humanAlive = 0
-    
  
     def setInformation(self, i, org, enemy):
         #0 - organism killed enemy
@@ -168,11 +168,9 @@ class World(object):
         if i == 6:
             self.__messageInfo += org.__class__.__name__ + "(" + str(org.posX) + "," + str(org.posY) + ")" + " already used his superability" + "\n"
 
-    #
-
     # Recreate world with new size
     def changeSize(self, sizeX, sizeY):
-        self.clear
+        self.__clear()
         if sizeX > 50:
             sizeX = 50
         if sizeY > 50:
@@ -186,7 +184,7 @@ class World(object):
         self.__initiativeList = []
         self.__humanAlive = 0;
         self.__messageInfo = ""
-
+        self.__addHuman()
         self.__worldWindow.delete("all")
         self.drawWorld()
     
@@ -205,6 +203,7 @@ class World(object):
         file = askopenfile()
         self.changeSize(int(file.readline()), int(file.readline()))
         self.__turn = int(file.readline())
+        self.__clear()
 
         for lineOrg in file:
             orgList = lineOrg.split(" ")
