@@ -14,7 +14,7 @@ class Turtle(Animal):
     def action(self):
         canMove = random.randint(0, 4)
         if canMove == 0: 
-            return super.action();
+            return super().action();
         else:
             return 0;
 

@@ -28,6 +28,9 @@
     <Compile Include="Organisms\Animals\Antelope.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Organisms\Animals\CyberSheep.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Organisms\Animals\Fox.py">
       <SubType>Code</SubType>
     </Compile>
@@ -41,6 +44,24 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Organisms\Organism.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Organisms\Plants\Dandelion.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Organisms\Plants\DeadlyNightshade.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Organisms\Plants\Grass.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Organisms\Plants\Guarana.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Organisms\Plants\Plant.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Organisms\Plants\SosnowskyHogweed.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="World\World.py">
@@ -59,7 +80,6 @@
     <Content Include="Organisms\Icons\Dandelion.png" />
     <Content Include="Organisms\Icons\DeadlyNightshade.png" />
     <Content Include="Organisms\Icons\Fox.png" />
-    <Content Include="Organisms\Icons\Grass.png" />
     <Content Include="Organisms\Icons\Guarana.png" />
     <Content Include="Organisms\Icons\Sheep.png" />
     <Content Include="Organisms\Icons\SosnowskyHogweed.png" />

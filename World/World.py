@@ -3,7 +3,14 @@ from Organisms.Animals.Wolf import Wolf
 from Organisms.Animals.Antelope import Antelope
 from Organisms.Animals.Fox import Fox
 from Organisms.Animals.Sheep import Sheep
+from Organisms.Animals.CyberSheep import CyberSheep
 from Organisms.Animals.Turtle import Turtle
+
+from Organisms.Plants.Grass import Grass
+from Organisms.Plants.Dandelion import Dandelion
+from Organisms.Plants.DeadlyNightshade import DeadlyNightshade
+from Organisms.Plants.Guarana import Guarana
+from Organisms.Plants.SosnowskyHogweed import SosnowskyHogweed
 
 
 class World(object):
@@ -18,7 +25,7 @@ class World(object):
         self.__initiativeList = []
         self.__humanAlive = 0;
         self.__messageInfo = ""
-        self.ORGANISMS = [Wolf, Antelope, Fox, Sheep, Turtle]
+        self.ORGANISMS = [Wolf, Antelope, Fox, Sheep, Turtle, Grass, Dandelion, DeadlyNightshade, Guarana, SosnowskyHogweed, CyberSheep]
 
         self.addOrganism(Wolf(0, 0, self))
         self.addOrganism(Wolf(0, 1, self))
@@ -98,11 +105,25 @@ class World(object):
                return org
         return None
 
+    # Return nearest Sosnowsky Hogweed of given coords
+    def getNearestSosnowsky(self, posX, posY):
+        nearestSosonowsky = None
+        minX = self._sizeX
+        minY = self._sizeY
+        for sosn in self.__initiativeList:
+            if isinstance(sosn, SosnowskyHogweed) and sosn.isAlive == 1:
+                if abs(sosn.posX - posX) + abs(sosn.posY - posY) < minX + minY:
+                    minX = abs(sosn.posX - posX)
+                    minY = abs(sosn.posY - posY)
+                    nearestSosonowsky = sosn
+        
+        return nearestSosonowsky
+
     # Delete all dead organisms from list                      
     def deleteOrganism (self):
         self.__initiativeList = [org for org in self.__initiativeList if org.isAlive]
         #for org in self.__initiativeList:
-        #   if org.isinsance():
+        #   if isinsance(org, Human):
         #       __humanAlive = 0
     
     # Delete List and reset variables
@@ -118,7 +139,7 @@ class World(object):
             self.__messageInfo += org.__class__.__name__ + "(" + str(org.posX) + "," + str(org.posY) + ")" + " has killed " + enemy.__class__.__name__ + "(" + str(enemy.posX) + "," + str(enemy.posY) + ")" + "\n"
         #1 - organism is Born
         if i == 1:
-            self.__messageInfo += org.__class__.__name__ + "(" + str(org.posX) + "," + str(org.posY) + ")" + " was Born " + "\n"
+            self.__messageInfo += org.__class__.__name__ + "(" + str(org.posX) + "," + str(org.posY) + ")" + " appeared " + "\n"
         #2 - organism escape
         if i == 2:
             self.__messageInfo += org.__class__.__name__ + " trying kill " + enemy.__class__.__name__ + " but " + enemy.__class__.__name__ + " escaped " + "\n"

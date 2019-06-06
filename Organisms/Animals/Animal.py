@@ -5,7 +5,6 @@ import random
 class Animal(Organism, ABC):
     def __init__(self, posX, posY, world, strength=None):
         super().__init__(posX, posY, world, strength)
-        self._name = "Animal"
         self._walkBoost = 0
         if strength is not None:
             self._strength = strength

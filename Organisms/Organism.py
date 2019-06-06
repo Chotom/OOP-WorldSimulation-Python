@@ -56,12 +56,17 @@ class Organism(ABC):
             return 0
         # Both die
         elif self.canPoison:
-            #world.setInformation(0, this, org)
-            #world.setInformation(0, org, this)
-
-            self.isAlive = 0
-
-            return 1
+            if self.__class__.__name__ == "SosnowskyHogweed" and org.canEatSosnowsky == 1:
+                org.posX += changeX
+                org.posY += changeY
+                self._world.setInformation(0, org, self)
+                self.isAlive = 0
+                return 0
+            else :
+                self._world.setInformation(0, self, org)
+                self._world.setInformation(0, org, self)
+                self.isAlive = 0
+                return 1
         
 
         # Defender die or escape
@@ -112,11 +117,11 @@ class Organism(ABC):
 
         if (posX - walkRange >= 0) and (self._world.getOrganism(posX - walkRange, posY) is None): 
             possibleMove[0] = 1;
-        if (posX + walkRange < self._world.sizeX) and (self._world.getOrganism(posX + walkRange, posY) is None): 
+        if (posX + walkRange < self._world.sizeY) and (self._world.getOrganism(posX + walkRange, posY) is None): 
             possibleMove[1] = 1;
         if (posY - walkRange >= 0) and (self._world.getOrganism(posX, posY - walkRange) is None): 
             possibleMove[2] = 1;
-        if (posY + walkRange < self._world.sizeY) and (self._world.getOrganism(posX, posY + walkRange) is None): 
+        if (posY + walkRange < self._world.sizeX) and (self._world.getOrganism(posX, posY + walkRange) is None): 
             possibleMove[3] = 1;
         return possibleMove;
 
