@@ -49,9 +49,9 @@ class MainWindow(object):
         self.__world = World.World(self.__worldView, 20, 20, self.__labelText)
 
         # Set Buttons (3, 1)
-        self.__saveWorldButton = Button(self.__mainWindow, text="Save", width=29, height=4)
+        self.__saveWorldButton = Button(self.__mainWindow, text="Save", width=29, height=4, command=self.__world.saveToFile)
         self.__saveWorldButton.grid(row=3, column=10, columnspan=3, rowspan=1)
-        self.__loadWorldButton = Button(self.__mainWindow, text="Load", width=29, height=4)
+        self.__loadWorldButton = Button(self.__mainWindow, text="Load", width=29, height=4, command=self.__world.loadWorld)
         self.__loadWorldButton.grid(row=3, column=13, columnspan=3, rowspan=1)
         self.__newTurnButton = Button(self.__mainWindow, text="New Turn", width=60, height=4, command=self.__world.setNextTurn)
         self.__newTurnButton.grid(row=4, column=10, columnspan=6, rowspan=1)

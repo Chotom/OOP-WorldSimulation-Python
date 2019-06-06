@@ -1,3 +1,4 @@
+from tkinter.filedialog import *
 from Organisms import Organism
 from Organisms.Animals.Wolf import Wolf
 from Organisms.Animals.Antelope import Antelope
@@ -129,8 +130,9 @@ class World(object):
     # Delete List and reset variables
     def clear(self):
         self.deleteOrganism()
-        __initiativeList.clear()
-        __humanAlive = 0
+        self. __initiativeList.clear()
+        self._worldWindow.delete("all")
+        self.__humanAlive = 0
     
  
     def setInformation(self, i, org, enemy):
@@ -170,6 +172,38 @@ class World(object):
         self._worldWindow.delete("all")
         self.drawWorld()
     
+    # Save organisms to file
+    def saveToFile(self):
+        file = asksaveasfile()
+        file.write(str(self.sizeX) + "\n")
+        file.write(str(self.sizeY) + "\n")
+        file.write(str(self._turn) + "\n")
+        for org in self.__initiativeList:
+            file.write(org.getOrgToSave())
+        file.close()
+
+    # Load organism from file
+    def loadWorld(self):
+        file = askopenfile()
+        self.changeSize(int(file.readline()), int(file.readline()))
+        self._turn = int(file.readline())
+
+        for lineOrg in file:
+            orgList = lineOrg.split(" ")
+            #self.deflatOrganism(flatList)
+            for Organism in self.ORGANISMS:
+                if orgList[0] == Organism.__name__:
+                    newOrg = Organism(int(orgList[1]), int(orgList[2]), self, int(orgList[3]))
+                    self.addOrganism(newOrg)
+                    if self._turn != 0:
+                        newOrg.canReproduce=1
+                        newOrg.isBorn=0
+                    newOrg.draw(self._tileWidth)
+                    break;
+
+        file.close()
+        self.drawWorld()
+
     #Getters
     @property
     def worldWindow(self):

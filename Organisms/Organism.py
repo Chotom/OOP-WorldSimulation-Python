@@ -159,7 +159,9 @@ class Organism(ABC):
     #def isBorn(self, change):
     #    self._isBorn = change
 
-  
+    def getOrgToSave(self):
+        return self.__class__.__name__ + " " + str(self.posX) + " " + str(self.posY) + " " + str(self.strength) + "\n"
+
     #Getters ans setters
     @property
     def posX(self):
