@@ -34,7 +34,7 @@ class MainWindow(object):
         self.__addOrgText = Label(self.__addOrgWindow, text="Click left button on board to add chosen organism", width=60) 
         self.__addOrgText.grid(row=0, column=0, columnspan=6)
         self.__organismToChoose = StringVar(self.__addOrgWindow, "Antelope")
-        organisms = ["Antelope", "Fox", "Sheep", "CyberSheep", "Turtle", "Wolf", "Dandelion", "DeadlyNightshade", "Grass", "Guarana", "SosnowskyHogweed"]
+        organisms = ("Antelope", "Fox", "Sheep", "CyberSheep", "Turtle", "Wolf", "Dandelion", "DeadlyNightshade", "Grass", "Guarana", "SosnowskyHogweed")
         self.__organismChooser = OptionMenu(self.__addOrgWindow, self.__organismToChoose, *organisms)
         self.__organismChooser.grid(row=1, column=0, columnspan=6, rowspan=1)
 

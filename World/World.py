@@ -29,7 +29,7 @@ class World(object):
         self.__humanAlive = 0;
         self.__messageInfo = ""
         self.__humanZn = ""
-        self.__ORGANISMS = [Wolf, Antelope, Fox, Sheep, Turtle, Grass, Dandelion, DeadlyNightshade, Guarana, SosnowskyHogweed, CyberSheep]
+        self.__ORGANISMS = (Wolf, Antelope, Fox, Sheep, Turtle, Grass, Dandelion, DeadlyNightshade, Guarana, SosnowskyHogweed, CyberSheep)
 
         self.__addHuman()
 
