@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from tkinter import *
-from Lib import random
+import random
 
 class Organism(ABC):
     def __init__(self, posX, posY, world, strength=None):
@@ -29,7 +29,7 @@ class Organism(ABC):
         return self.__class__(posX, posY, self._world)
 
     def draw(self, tileWidth):
-            self._img = PhotoImage(file="Organisms/Icons/" + self.__class__.__name__ +".png")
+            self._img = PhotoImage(file="Organisms/icons/" + self.__class__.__name__ +".png")
             self._img = self._img.subsample(int(self._img.width()/tileWidth + 1))
             x0 = (self._posX * tileWidth)
             y0 = self._posY * tileWidth
