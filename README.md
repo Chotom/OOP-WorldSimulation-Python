@@ -6,4 +6,4 @@ It is extended version of [this project](https://github.com/Chotom/OOP_WorldSimu
 Tkinter module is required due to GUI mode. Both Tk and tkinter are available on most Unix platforms, 
 as well as on Windows systems.
 Running ```python -m tkinter``` from the command line should open a window demonstrating a simple Tk interface, 
-letting you know that Tkinter is properly installed on your system, and also showing what version of Tcl/Tk is installed, so you can read the Tcl/Tk documentation specific to that version.
+letting you know that Tkinter is properly installed on your system, and also showing what version of Tcl/Tk is installed, so you can read the Tcl/Tk documentation specific to that version. It should be installed by default on Windows and on Ubuntu it can be added with ```apt-get install python-tk```.
